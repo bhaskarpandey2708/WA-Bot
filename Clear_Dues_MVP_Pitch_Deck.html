@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clear Dues Command Center | Enterprise Pitch + MVP View</title>
+  <style>
+    :root {
+      --ink: #111729;
+      --muted: #4f5b79;
+      --surface: #ffffff;
+      --paper: #f5f7f3;
+      --line: #d7dbe7;
+      --brand: #0f4fca;
+      --brand-2: #0f7f5f;
+      --deep: #222e4f;
+      --warm: #d7c39a;
+      --mint: #c8e7df;
+      --shadow: 0 14px 40px rgba(17, 23, 41, 0.08);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, var(--warm) 0%, #e4e8d9 36%, var(--mint) 100%);
+      color: var(--ink);
+      font-family: "Avenir Next", "Manrope", "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    .doc-wrap {
+      max-width: 1160px;
+      margin: 32px auto 64px;
+      padding: 0 18px;
+    }
+
+    .hero {
+      background: linear-gradient(118deg, #f6efe1 0%, #e6efdd 54%, #d4ece5 100%);
+      border: 1px solid rgba(17, 23, 41, 0.1);
+      border-radius: 28px;
+      padding: 34px 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      border-radius: 999px;
+      background: #d6ddb9;
+      color: #0f5b56;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      margin-bottom: 16px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-size: clamp(30px, 3.6vw, 48px);
+      line-height: 1.08;
+      max-width: 900px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 900px;
+    }
+
+    .hero-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hero-chip {
+      border: 1px solid rgba(17, 23, 41, 0.16);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      color: #22314f;
+    }
+
+    .panel {
+      margin-top: 18px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .section-title {
+      font-size: clamp(24px, 3vw, 34px);
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 16px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .kpi {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: #fafbff;
+    }
+
+    .kpi .label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .kpi .value {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--deep);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 16px;
+    }
+
+    .list-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: #fbfcff;
+    }
+
+    .list-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .list-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #213152;
+    }
+
+    .list-card li {
+      margin: 7px 0;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #e4e7ef;
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f3f6ff;
+      color: #2a3758;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .mvp-intro {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .image-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(17, 23, 41, 0.06);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .image-card img {
+      width: 100%;
+      display: block;
+      height: auto;
+      background: #f2f4f8;
+    }
+
+    figcaption {
+      padding: 12px 14px 14px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: #243558;
+    }
+
+    .gallery-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .gallery-one {
+      margin-top: 14px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .foot {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: linear-gradient(120deg, #ecf4ff, #e8f4ee);
+    }
+
+    .foot h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .foot p {
+      margin: 0;
+      color: #2d3f63;
+    }
+
+    .page-break {
+      break-before: page;
+      page-break-before: always;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        padding: 22px;
+      }
+
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .two-col,
+      .gallery-two {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+
+      html,
+      body {
+        background: #ffffff;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .doc-wrap {
+        margin: 0;
+        max-width: none;
+        padding: 0;
+      }
+
+      .hero,
+      .panel {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="doc-wrap">
+    <section class="hero">
+      <span class="eyebrow">Enterprise Collections Add-On</span>
+      <h1>Clear Dues Command Center</h1>
+      <p>
+        A WhatsApp-first collections operations layer, delivered by a high-end consulting team,
+        designed to plug into existing bank/NBFC/fintech systems without replacing core platforms.
+      </p>
+      <div class="hero-grid">
+        <div class="hero-chip"><strong>Prepared For:</strong> Multi-Organization Enterprise Stakeholders</div>
+        <div class="hero-chip"><strong>Prepared By:</strong> [Your Name / Consulting Brand]</div>
+        <div class="hero-chip"><strong>Date:</strong> February 2026</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Why This Matters</h2>
+      <p class="sub">
+        Most organizations already have strong core systems, but collections communication and closure tracking remain fragmented.
+        Clear Dues adds a focused execution layer for automated reminders, inbound handling, lead assignment, and audit-ready reporting.
+      </p>
+
+      <div class="kpi-grid">
+        <div class="kpi">
+          <span class="label">Collections Reach</span>
+          <span class="value">High-volume WhatsApp campaigns</span>
+        </div>
+        <div class="kpi">
+          <span class="label">Response Ops</span>
+          <span class="value">Two-way conversation visibility</span>
+        </div>
+        <div class="kpi">
+          <span class="label">Closure Control</span>
+          <span class="value">Role-based lead ownership</span>
+        </div>
+        <div class="kpi">
+          <span class="label">Reporting</span>
+          <span class="value">CSV, XLSX, GSheet, PDF</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Add-On to Existing Operations</h2>
+      <p class="sub">
+        Clear Dues does not replace CRM/LMS/LOS/ERP. It integrates as an operational layer on top of your existing stack.
+      </p>
+
+      <div class="two-col">
+        <article class="list-card">
+          <h3>Integration Modes</h3>
+          <ul>
+            <li>File-based intake (CSV/XLSX/JSON) from current systems</li>
+            <li>API-driven campaign trigger and status updates</li>
+            <li>Webhook-based inbound conversation capture</li>
+            <li>Payment link insertion for instant borrower action</li>
+          </ul>
+        </article>
+
+        <article class="list-card">
+          <h3>Operating Outcomes</h3>
+          <ul>
+            <li>Faster reminder cycles and reduced manual follow-up</li>
+            <li>Centralized conversation and disposition visibility</li>
+            <li>Lead assignment to junior/senior agents for closure</li>
+            <li>Cost control with inbound disconnect switch</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="table-wrap" style="margin-top: 14px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Current Team Pain</th>
+              <th>Clear Dues Add-On</th>
+              <th>Expected Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Manual reminder coordination</td>
+              <td>Template-based bulk campaign composer</td>
+              <td>Higher coverage, fewer delays</td>
+            </tr>
+            <tr>
+              <td>Untracked borrower replies</td>
+              <td>Conversation + notes workspace</td>
+              <td>Better promise-to-pay follow-through</td>
+            </tr>
+            <tr>
+              <td>No owner-level closure system</td>
+              <td>Lead assignment desk with status transitions</td>
+              <td>Higher accountability and closure discipline</td>
+            </tr>
+            <tr>
+              <td>Scattered reporting</td>
+              <td>One-click exports and PDF reports</td>
+              <td>Faster management decision cycles</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel page-break">
+      <h2 class="section-title">MVP Product Walkthrough</h2>
+      <p class="sub">
+        The following screenshots are from the live Clear Dues Admin Portal MVP. This section gives stakeholders a visual understanding
+        of operational flow from setup to conversation handling, assignment, retries, and reporting.
+      </p>
+
+      <div class="mvp-intro">
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-02.png" alt="Portal overview dashboard" />
+          <figcaption>
+            <strong>Portal Overview:</strong> Unified command center showing KPIs, campaign controls, and top-level execution status.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="gallery-two">
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-03.png" alt="Campaign composer module" />
+          <figcaption>
+            <strong>Campaign Composer:</strong> Choose send mode/template, load dynamic JSON payload, preview, and trigger outbound campaigns.
+          </figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-04.png" alt="Switches and scheduler module" />
+          <figcaption>
+            <strong>Switches & Scheduler:</strong> Inbound connect/disconnect switch, retry worker control, cron scheduling, and runtime settings.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="gallery-two">
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-05.png" alt="Batch upload module" />
+          <figcaption>
+            <strong>Upload Batch:</strong> Supports CSV/XLSX/JSON campaign source uploads for preview and dispatch.
+          </figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-06.png" alt="Exports and report controls" />
+          <figcaption>
+            <strong>Export Center:</strong> Dataset-level CSV/XLSX/Google Sheet output and PDF reports in org/campaign/day views.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Conversation and Team Execution Views</h2>
+      <p class="sub">
+        The MVP includes complete operational screens for borrower response tracking, notes/disposition capture,
+        role management, lead assignment, and retry monitoring.
+      </p>
+
+      <div class="gallery-one">
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-07.png" alt="Conversations and notes workspace" />
+          <figcaption>
+            <strong>Conversations + Notes:</strong> Inbound/outbound timeline, borrower context, disposition tagging, and note capture.
+          </figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-08.png" alt="User role management" />
+          <figcaption>
+            <strong>User Roles:</strong> Admin, ops, viewer, and agent role management to align hierarchy with internal operating structure.
+          </figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-09.png" alt="Lead assignment desk" />
+          <figcaption>
+            <strong>Lead Assignment Desk:</strong> Queue filtering, assignee control, and closure workflow (`assign`, `update status`, `mark closed`).
+          </figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-10.png" alt="Retry queue" />
+          <figcaption>
+            <strong>Retry Queue:</strong> Outbound reliability panel to monitor delivery retries, status, and next attempt timestamps.
+          </figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="assets/portal-photos/portal-01.png" alt="Top activity audit table" />
+          <figcaption>
+            <strong>Top Activity Log:</strong> High-visibility operational audit feed for login, settings, and platform actions.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="foot">
+        <h3>Consulting-Led Positioning</h3>
+        <p>
+          This is positioned as a premium consulting + productized operations model: rapid deployment, process mapping,
+          role design, governance setup, and measurable collections outcomes without a full core-system replacement.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
